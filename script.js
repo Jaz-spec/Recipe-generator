@@ -9,6 +9,10 @@ function generateRecipe(event) {
 	let apiKey = "oa9f439cb230f940atf8b1fac2e41075";
 	let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
+	// Removing hidden class list from main section
+	let main = document.querySelector("#main");
+	main.classList.remove("hidden");
+
 	// Displaying a loading message on screen
 	let output = document.querySelector("#output");
 	let typewriter = new Typewriter(output, {
@@ -16,8 +20,9 @@ function generateRecipe(event) {
 		delay: 10,
 	});
 	typewriter
+		.pauseFor(1000)
 		.typeString("Writing your recipe...")
-		.pauseFor(2500)
+		.pauseFor(2000)
 		.deleteAll()
 		.start();
 
